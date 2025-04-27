@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ModijiLogo from "./assets/Modiji-logo.png";
 import { FiSend } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import BACKEND_URL from "./configuration";
 
 const backgroundTexts = [
   "मेरे प्यारे भाईयो और बहनों 🙏",
@@ -63,7 +64,7 @@ const ChatScreen = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/message/send", {
+      const response = await fetch(`${BACKEND_URL}/message/send`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userMessage: trimmed }),
